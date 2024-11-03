@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,6 +23,8 @@ namespace PCSimSaveEditor
         public static JObject meta = new JObject();
         public static JObject scene = new JObject();
         private List<string> passwdl = new List<string>();
+        private Point message_h = new Point(12, 502);
+        private Point message_s = new Point(618, 9);
         public easy()
         {
             InitializeComponent();
@@ -74,7 +77,15 @@ namespace PCSimSaveEditor
                     {
                         scene = JObject.Parse(string.Join("\n", lines.Skip(1)));
                     }
-                    cl_versiontextbox.Text = meta["version"]?.ToString() ?? "1.8.0";
+                    cl_versiontextbox.Text = meta["version"]?.ToString() ?? "?";
+                    if (cl_versiontextbox.Text.StartsWith("1.7"))
+                    {
+                        noticelabel.Location = message_s;
+                    } 
+                    else
+                    {
+                        noticelabel.Location = message_h;
+                    }
                     savenametextbox.Text = meta["roomName"]?.ToString() ?? "Unknown";
                     moneyvalue.Value = meta["coin"].Value<int?>() ?? 0;
                     string roomtype = "";
@@ -311,5 +322,6 @@ namespace PCSimSaveEditor
         {
 
         }
+        private void tempvalue_ValueChanged(object sender, EventArgs e) { }
     }
 }
