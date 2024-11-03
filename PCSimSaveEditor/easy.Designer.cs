@@ -1,4 +1,4 @@
-﻿namespace PCSimSaveEditor
+namespace PCSimSaveEditor
 {
     partial class easy
     {
@@ -65,6 +65,7 @@
             gluedvalue = new System.Windows.Forms.CheckBox();
             damagedvalue = new System.Windows.Forms.CheckBox();
             InsertGroup = new System.Windows.Forms.GroupBox();
+            spawnidvalue = new System.Windows.Forms.ComboBox();
             Insertbtn = new System.Windows.Forms.Button();
             randomizebutton = new System.Windows.Forms.Button();
             idvalue = new System.Windows.Forms.NumericUpDown();
@@ -99,7 +100,7 @@
             clabelX = new System.Windows.Forms.Label();
             exportpc = new System.Windows.Forms.Button();
             exportastxt = new System.Windows.Forms.Button();
-            spawnidvalue = new System.Windows.Forms.ComboBox();
+            noticelabel = new System.Windows.Forms.Label();
             MetaGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tempvalue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)playtimevalue).BeginInit();
@@ -226,9 +227,11 @@
             // 
             tempvalue.Location = new System.Drawing.Point(85, 209);
             tempvalue.Maximum = new decimal(new int[] { 2147483646, 0, 0, 0 });
+            tempvalue.Minimum = new decimal(new int[] { 2147483646, 0, 0, int.MinValue });
             tempvalue.Name = "tempvalue";
             tempvalue.Size = new System.Drawing.Size(161, 23);
             tempvalue.TabIndex = 17;
+            tempvalue.ValueChanged += tempvalue_ValueChanged;
             // 
             // cl_temp
             // 
@@ -395,9 +398,9 @@
             oneseventooneeight.Controls.Add(listadded);
             oneseventooneeight.Controls.Add(ccxlabvbblabel);
             oneseventooneeight.Controls.Add(installosallpc);
-            oneseventooneeight.Location = new System.Drawing.Point(6, 19);
+            oneseventooneeight.Location = new System.Drawing.Point(6, 22);
             oneseventooneeight.Name = "oneseventooneeight";
-            oneseventooneeight.Size = new System.Drawing.Size(258, 141);
+            oneseventooneeight.Size = new System.Drawing.Size(258, 138);
             oneseventooneeight.TabIndex = 1;
             oneseventooneeight.TabStop = false;
             oneseventooneeight.Text = "1.7.0 to 1.8.0";
@@ -506,6 +509,16 @@
             InsertGroup.TabIndex = 1;
             InsertGroup.TabStop = false;
             InsertGroup.Text = "Insert";
+            // 
+            // spawnidvalue
+            // 
+            spawnidvalue.FormattingEnabled = true;
+            spawnidvalue.Items.AddRange(new object[] { "ATX", "ATX 2", "Apson_A3", "Bitcoin", "BoxRemovalBomb", "CPU Celeron G3920", "CPU RMD Ryzen 9 7950X", "CPU i3-8300", "CPU i5-8400", "CPU i7-13700K", "CPU i7-14700K", "CPU i7-8700K", "CPU i9-12900K", "CPU i9-7900X", "CPU i9-9900K", "CRT_Monitor", "CardboardBox", "CardboardBox 2", "Carrot", "CaseFan", "CaseFan(RGB)", "Case_ATX 2(Black)", "Case_ATX 2(White)", "Case_ATX(Black)", "Case_ATX(White)", "Case_ITX(Black)", "Case_ITX(Blue)", "Case_ITX(Green)", "Case_ITX(Red)", "Case_ITX(White)", "Case_ITX(Yellow)", "Chair", "Cooler", "Cooler(RGB)", "Cover_ATX(Black)", "Cover_ATX(Glass)", "Cover_ATX(White)", "Cover_ITX(Black)", "Cover_ITX(Glass)", "Cover_ITX(White)", "Crate", "Crate_CRT_Monitor", "Crate_Case_ATX 2(Black)", "Crate_Case_ATX 2(White)", "Crate_Case_ATX(Black)", "Crate_Case_ATX(White)", "Crate_Case_ITX(Black)", "Crate_Case_ITX(Blue)", "Crate_Case_ITX(Green)", "Crate_Case_ITX(Red)", "Crate_Case_ITX(White)", "Crate_Case_ITX(Yellow)", "Crate_Cover_ATX(Glass)", "Crate_Cover_ITX(Glass)", "Crate_CurvedMonitor", "Crate_FlatMonitor", "Crate_Monitor 2(Blue)", "Crate_Monitor 2(Green)", "Crate_Monitor 2(Red)", "Crate_Monitor 2(White)", "Crate_Monitor 2(Yellow)", "Crate_Monitor(Black)", "Crate_Monitor(White)", "Crate_TV", "Cube", "CurvedMonitor", "EATX", "FlashDrive", "FlatMonitor", "GT1030", "GT440", "GTX1060", "GTX1070", "GTX1070Ti", "GTX1080", "GTX1080Ti", "GamingChair", "GamingChair_1", "GamingChair_2", "GamingChair_3", "Generator", "Glue", "HDD 1TB", "HDD 2TB", "HDD 500GB", "HDD 5TB", "Hammer", "Headphone", "HeadphoneStand", "HolographicProjector", "Keyboard", "Laptop", "LedDisplay_Clock", "LedDisplay_PC", "LedDisplay_Rain", "LightPanel_Hexagon", "LightPanel_Triangle", "LongCardboardBox", "MechanicalKeyboard", "MechanicalKeyboard_Red", "MechanicalKeyboard_White", "Micro_ATX", "Miner", "Mini_ITX", "Monitor 2(Blue)", "Monitor 2(Green)", "Monitor 2(Red)", "Monitor 2(White)", "Monitor 2(Yellow)", "Monitor(Black)", "Monitor(White)", "MonitorStand", "Mouse", "Mug", "OfficeChair", "PSU 1kW", "PSU 2kW", "PSU 300W", "PSU 500W", "Paper", "PaperBall", "Part", "Part_1", "Part_2", "Part_3", "Part_4", "Part_5", "PictureFrame", "PictureFrameStand", "PictureFrame_2", "Pillow", "PrinterInk_C", "PrinterInk_K", "PrinterInk_M", "PrinterInk_Y", "Projector", "PuoioPhone", "RAM 16GB", "RAM 16GB(RGB)", "RAM 1GB", "RAM 2GB", "RAM 32GB", "RAM 32GB(RGB)", "RAM 4GB", "RAM 4GB(RGB)", "RAM 8GB", "RAM 8GB(RGB)", "RTX2080", "RTX2080Ti", "RTX3080", "RTX3080Ti", "Rtx4080", "Rtx4080Ti", "SSD 128GB", "SSD 1TB", "SSD 256GB", "SSD 2TB", "SSD 512GB", "SSD_M.2 128GB", "SSD_M.2 1TB", "SSD_M.2 256GB", "SSD_M.2 512GB", "TV", "Table", "Table_1", "TestBench", "Titan V", "ToiletBowl", "TowerCooler", "TowerCooler(RGB)", "VR_Glasses", "WallMount", "WallShelf", "WallShelf_1", "WaterCooler", "WaterCooler_1", "Webcam" });
+            spawnidvalue.Location = new System.Drawing.Point(64, 109);
+            spawnidvalue.Name = "spawnidvalue";
+            spawnidvalue.Size = new System.Drawing.Size(92, 23);
+            spawnidvalue.TabIndex = 8;
+            spawnidvalue.SelectedIndexChanged += spawnidvalue_SelectedIndexChanged;
             // 
             // Insertbtn
             // 
@@ -853,21 +866,20 @@
             exportastxt.UseVisualStyleBackColor = true;
             exportastxt.Click += exportastxt_Click;
             // 
-            // spawnidvalue
+            // noticelabel
             // 
-            spawnidvalue.FormattingEnabled = true;
-            spawnidvalue.Items.AddRange(new object[] { "ATX", "ATX 2", "Apson_A3", "Bitcoin", "BoxRemovalBomb", "CPU Celeron G3920", "CPU RMD Ryzen 9 7950X", "CPU i3-8300", "CPU i5-8400", "CPU i7-13700K", "CPU i7-14700K", "CPU i7-8700K", "CPU i9-12900K", "CPU i9-7900X", "CPU i9-9900K", "CRT_Monitor", "CardboardBox", "CardboardBox 2", "Carrot", "CaseFan", "CaseFan(RGB)", "Case_ATX 2(Black)", "Case_ATX 2(White)", "Case_ATX(Black)", "Case_ATX(White)", "Case_ITX(Black)", "Case_ITX(Blue)", "Case_ITX(Green)", "Case_ITX(Red)", "Case_ITX(White)", "Case_ITX(Yellow)", "Chair", "Cooler", "Cooler(RGB)", "Cover_ATX(Black)", "Cover_ATX(Glass)", "Cover_ATX(White)", "Cover_ITX(Black)", "Cover_ITX(Glass)", "Cover_ITX(White)", "Crate", "Crate_CRT_Monitor", "Crate_Case_ATX 2(Black)", "Crate_Case_ATX 2(White)", "Crate_Case_ATX(Black)", "Crate_Case_ATX(White)", "Crate_Case_ITX(Black)", "Crate_Case_ITX(Blue)", "Crate_Case_ITX(Green)", "Crate_Case_ITX(Red)", "Crate_Case_ITX(White)", "Crate_Case_ITX(Yellow)", "Crate_Cover_ATX(Glass)", "Crate_Cover_ITX(Glass)", "Crate_CurvedMonitor", "Crate_FlatMonitor", "Crate_Monitor 2(Blue)", "Crate_Monitor 2(Green)", "Crate_Monitor 2(Red)", "Crate_Monitor 2(White)", "Crate_Monitor 2(Yellow)", "Crate_Monitor(Black)", "Crate_Monitor(White)", "Crate_TV", "Cube", "CurvedMonitor", "EATX", "FlashDrive", "FlatMonitor", "GT1030", "GT440", "GTX1060", "GTX1070", "GTX1070Ti", "GTX1080", "GTX1080Ti", "GamingChair", "GamingChair_1", "GamingChair_2", "GamingChair_3", "Generator", "Glue", "HDD 1TB", "HDD 2TB", "HDD 500GB", "HDD 5TB", "Hammer", "Headphone", "HeadphoneStand", "HolographicProjector", "Keyboard", "Laptop", "LedDisplay_Clock", "LedDisplay_PC", "LedDisplay_Rain", "LightPanel_Hexagon", "LightPanel_Triangle", "LongCardboardBox", "MechanicalKeyboard", "MechanicalKeyboard_Red", "MechanicalKeyboard_White", "Micro_ATX", "Miner", "Mini_ITX", "Monitor 2(Blue)", "Monitor 2(Green)", "Monitor 2(Red)", "Monitor 2(White)", "Monitor 2(Yellow)", "Monitor(Black)", "Monitor(White)", "MonitorStand", "Mouse", "Mug", "OfficeChair", "PSU 1kW", "PSU 2kW", "PSU 300W", "PSU 500W", "Paper", "PaperBall", "Part", "Part_1", "Part_2", "Part_3", "Part_4", "Part_5", "PictureFrame", "PictureFrameStand", "PictureFrame_2", "Pillow", "PrinterInk_C", "PrinterInk_K", "PrinterInk_M", "PrinterInk_Y", "Projector", "PuoioPhone", "RAM 16GB", "RAM 16GB(RGB)", "RAM 1GB", "RAM 2GB", "RAM 32GB", "RAM 32GB(RGB)", "RAM 4GB", "RAM 4GB(RGB)", "RAM 8GB", "RAM 8GB(RGB)", "RTX2080", "RTX2080Ti", "RTX3080", "RTX3080Ti", "Rtx4080", "Rtx4080Ti", "SSD 128GB", "SSD 1TB", "SSD 256GB", "SSD 2TB", "SSD 512GB", "SSD_M.2 128GB", "SSD_M.2 1TB", "SSD_M.2 256GB", "SSD_M.2 512GB", "TV", "Table", "Table_1", "TestBench", "Titan V", "ToiletBowl", "TowerCooler", "TowerCooler(RGB)", "VR_Glasses", "WallMount", "WallShelf", "WallShelf_1", "WaterCooler", "WaterCooler_1", "Webcam" });
-            spawnidvalue.Location = new System.Drawing.Point(64, 109);
-            spawnidvalue.Name = "spawnidvalue";
-            spawnidvalue.Size = new System.Drawing.Size(92, 23);
-            spawnidvalue.TabIndex = 8;
-            spawnidvalue.SelectedIndexChanged += spawnidvalue_SelectedIndexChanged;
+            noticelabel.Location = new System.Drawing.Point(618, 9);
+            noticelabel.Name = "noticelabel";
+            noticelabel.Size = new System.Drawing.Size(470, 35);
+            noticelabel.TabIndex = 6;
+            noticelabel.Text = "NOTICE: this editor doesn't fully support 1.7.X saves and may not fully function. please use PCSim 1.8.0 and import the save. Then play it, leave it then it should auto convert.";
             // 
             // easy
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1101, 437);
+            ClientSize = new System.Drawing.Size(1101, 439);
+            Controls.Add(noticelabel);
             Controls.Add(exportastxt);
             Controls.Add(exportpc);
             Controls.Add(scenegroup);
@@ -991,5 +1003,6 @@
         private System.Windows.Forms.GroupBox fm;
         private System.Windows.Forms.Button openfm;
         private System.Windows.Forms.ComboBox spawnidvalue;
+        private System.Windows.Forms.Label noticelabel;
     }
 }
