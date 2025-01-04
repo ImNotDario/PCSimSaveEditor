@@ -26,8 +26,7 @@ namespace PCSimSaveEditor
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             Open = new System.Windows.Forms.Button();
             TopText = new System.Windows.Forms.Label();
             MetaGroup = new System.Windows.Forms.GroupBox();
@@ -52,6 +51,10 @@ namespace PCSimSaveEditor
             ca_meta_ver_label = new System.Windows.Forms.Label();
             scenegroup = new System.Windows.Forms.GroupBox();
             toolsgroup = new System.Windows.Forms.GroupBox();
+            Destructive = new System.Windows.Forms.GroupBox();
+            DestroyBtn = new System.Windows.Forms.Button();
+            dselevel = new System.Windows.Forms.Label();
+            dslevel = new System.Windows.Forms.TrackBar();
             fm = new System.Windows.Forms.GroupBox();
             openfm = new System.Windows.Forms.Button();
             oneseventooneeight = new System.Windows.Forms.GroupBox();
@@ -65,6 +68,7 @@ namespace PCSimSaveEditor
             gluedvalue = new System.Windows.Forms.CheckBox();
             damagedvalue = new System.Windows.Forms.CheckBox();
             InsertGroup = new System.Windows.Forms.GroupBox();
+            spawnopminer = new System.Windows.Forms.Button();
             spawnidvalue = new System.Windows.Forms.ComboBox();
             Insertbtn = new System.Windows.Forms.Button();
             randomizebutton = new System.Windows.Forms.Button();
@@ -101,12 +105,21 @@ namespace PCSimSaveEditor
             exportpc = new System.Windows.Forms.Button();
             exportastxt = new System.Windows.Forms.Button();
             noticelabel = new System.Windows.Forms.Label();
+            scriptingb = new System.Windows.Forms.Button();
+            remotelbl = new System.Windows.Forms.Label();
+            remId = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            monitorId = new System.Windows.Forms.NumericUpDown();
+            textBox1 = new System.Windows.Forms.TextBox();
+            Newsave = new System.Windows.Forms.Button();
             MetaGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)tempvalue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)playtimevalue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)moneyvalue).BeginInit();
             scenegroup.SuspendLayout();
             toolsgroup.SuspendLayout();
+            Destructive.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dslevel).BeginInit();
             fm.SuspendLayout();
             oneseventooneeight.SuspendLayout();
             progcrack.SuspendLayout();
@@ -128,13 +141,14 @@ namespace PCSimSaveEditor
             ((System.ComponentModel.ISupportInitialize)zvalue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)yvalue).BeginInit();
             ((System.ComponentModel.ISupportInitialize)xvalue).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)monitorId).BeginInit();
             SuspendLayout();
             // 
             // Open
             // 
             Open.Location = new System.Drawing.Point(12, 27);
             Open.Name = "Open";
-            Open.Size = new System.Drawing.Size(567, 29);
+            Open.Size = new System.Drawing.Size(414, 29);
             Open.TabIndex = 0;
             Open.Text = "Open .pc";
             Open.UseVisualStyleBackColor = true;
@@ -172,14 +186,14 @@ namespace PCSimSaveEditor
             MetaGroup.Controls.Add(ca_meta_ver_label);
             MetaGroup.Location = new System.Drawing.Point(12, 62);
             MetaGroup.Name = "MetaGroup";
-            MetaGroup.Size = new System.Drawing.Size(252, 343);
+            MetaGroup.Size = new System.Drawing.Size(252, 368);
             MetaGroup.TabIndex = 2;
             MetaGroup.TabStop = false;
             MetaGroup.Text = "Metadata";
             // 
             // savebutton
             // 
-            savebutton.Location = new System.Drawing.Point(6, 311);
+            savebutton.Location = new System.Drawing.Point(7, 333);
             savebutton.Name = "savebutton";
             savebutton.Size = new System.Drawing.Size(240, 23);
             savebutton.TabIndex = 22;
@@ -357,21 +371,63 @@ namespace PCSimSaveEditor
             scenegroup.Controls.Add(playerData);
             scenegroup.Location = new System.Drawing.Point(270, 62);
             scenegroup.Name = "scenegroup";
-            scenegroup.Size = new System.Drawing.Size(824, 343);
+            scenegroup.Size = new System.Drawing.Size(824, 368);
             scenegroup.TabIndex = 3;
             scenegroup.TabStop = false;
             scenegroup.Text = "Scene";
             // 
             // toolsgroup
             // 
+            toolsgroup.Controls.Add(Destructive);
             toolsgroup.Controls.Add(fm);
             toolsgroup.Controls.Add(oneseventooneeight);
             toolsgroup.Location = new System.Drawing.Point(548, 19);
             toolsgroup.Name = "toolsgroup";
-            toolsgroup.Size = new System.Drawing.Size(270, 318);
+            toolsgroup.Size = new System.Drawing.Size(270, 343);
             toolsgroup.TabIndex = 4;
             toolsgroup.TabStop = false;
             toolsgroup.Text = "Tools";
+            // 
+            // Destructive
+            // 
+            Destructive.Controls.Add(DestroyBtn);
+            Destructive.Controls.Add(dselevel);
+            Destructive.Controls.Add(dslevel);
+            Destructive.Location = new System.Drawing.Point(6, 219);
+            Destructive.Name = "Destructive";
+            Destructive.Size = new System.Drawing.Size(258, 118);
+            Destructive.TabIndex = 3;
+            Destructive.TabStop = false;
+            Destructive.Text = "Destructive";
+            // 
+            // DestroyBtn
+            // 
+            DestroyBtn.Location = new System.Drawing.Point(6, 18);
+            DestroyBtn.Name = "DestroyBtn";
+            DestroyBtn.Size = new System.Drawing.Size(246, 23);
+            DestroyBtn.TabIndex = 2;
+            DestroyBtn.Text = "Destroy 10%";
+            DestroyBtn.UseVisualStyleBackColor = true;
+            DestroyBtn.Click += DestroyBtn_Click;
+            // 
+            // dselevel
+            // 
+            dselevel.AutoSize = true;
+            dselevel.Location = new System.Drawing.Point(6, 49);
+            dselevel.Name = "dselevel";
+            dselevel.Size = new System.Drawing.Size(124, 15);
+            dselevel.TabIndex = 1;
+            dselevel.Text = "Destruction level: 1/10";
+            // 
+            // dslevel
+            // 
+            dslevel.Location = new System.Drawing.Point(6, 67);
+            dslevel.Minimum = 1;
+            dslevel.Name = "dslevel";
+            dslevel.Size = new System.Drawing.Size(246, 45);
+            dslevel.TabIndex = 0;
+            dslevel.Value = 1;
+            dslevel.Scroll += dslevel_Scroll;
             // 
             // fm
             // 
@@ -439,7 +495,7 @@ namespace PCSimSaveEditor
             progcrack.Controls.Add(clabelpasswd);
             progcrack.Location = new System.Drawing.Point(309, 101);
             progcrack.Name = "progcrack";
-            progcrack.Size = new System.Drawing.Size(233, 236);
+            progcrack.Size = new System.Drawing.Size(233, 261);
             progcrack.TabIndex = 3;
             progcrack.TabStop = false;
             progcrack.Text = "Password Cracker";
@@ -450,7 +506,7 @@ namespace PCSimSaveEditor
             passwdlist.ItemHeight = 15;
             passwdlist.Location = new System.Drawing.Point(6, 37);
             passwdlist.Name = "passwdlist";
-            passwdlist.Size = new System.Drawing.Size(221, 184);
+            passwdlist.Size = new System.Drawing.Size(221, 214);
             passwdlist.TabIndex = 2;
             // 
             // clabelpasswd
@@ -495,6 +551,7 @@ namespace PCSimSaveEditor
             // 
             // InsertGroup
             // 
+            InsertGroup.Controls.Add(spawnopminer);
             InsertGroup.Controls.Add(spawnidvalue);
             InsertGroup.Controls.Add(Insertbtn);
             InsertGroup.Controls.Add(randomizebutton);
@@ -505,10 +562,20 @@ namespace PCSimSaveEditor
             InsertGroup.Controls.Add(posbox);
             InsertGroup.Location = new System.Drawing.Point(6, 170);
             InsertGroup.Name = "InsertGroup";
-            InsertGroup.Size = new System.Drawing.Size(297, 167);
+            InsertGroup.Size = new System.Drawing.Size(297, 192);
             InsertGroup.TabIndex = 1;
             InsertGroup.TabStop = false;
             InsertGroup.Text = "Insert";
+            // 
+            // spawnopminer
+            // 
+            spawnopminer.Location = new System.Drawing.Point(205, 138);
+            spawnopminer.Name = "spawnopminer";
+            spawnopminer.Size = new System.Drawing.Size(86, 23);
+            spawnopminer.TabIndex = 9;
+            spawnopminer.Text = "OP Miner";
+            spawnopminer.UseVisualStyleBackColor = true;
+            spawnopminer.Click += spawnopminer_Click;
             // 
             // spawnidvalue
             // 
@@ -522,9 +589,9 @@ namespace PCSimSaveEditor
             // 
             // Insertbtn
             // 
-            Insertbtn.Location = new System.Drawing.Point(201, 138);
+            Insertbtn.Location = new System.Drawing.Point(6, 163);
             Insertbtn.Name = "Insertbtn";
-            Insertbtn.Size = new System.Drawing.Size(90, 23);
+            Insertbtn.Size = new System.Drawing.Size(285, 23);
             Insertbtn.TabIndex = 7;
             Insertbtn.Text = "Insert";
             Insertbtn.UseVisualStyleBackColor = true;
@@ -848,7 +915,7 @@ namespace PCSimSaveEditor
             // 
             // exportpc
             // 
-            exportpc.Location = new System.Drawing.Point(12, 411);
+            exportpc.Location = new System.Drawing.Point(12, 436);
             exportpc.Name = "exportpc";
             exportpc.Size = new System.Drawing.Size(246, 23);
             exportpc.TabIndex = 4;
@@ -858,7 +925,7 @@ namespace PCSimSaveEditor
             // 
             // exportastxt
             // 
-            exportastxt.Location = new System.Drawing.Point(264, 411);
+            exportastxt.Location = new System.Drawing.Point(270, 436);
             exportastxt.Name = "exportastxt";
             exportastxt.Size = new System.Drawing.Size(135, 23);
             exportastxt.TabIndex = 5;
@@ -874,11 +941,81 @@ namespace PCSimSaveEditor
             noticelabel.TabIndex = 6;
             noticelabel.Text = "NOTICE: this editor doesn't fully support 1.7.X saves and may not fully function. please use PCSim 1.8.0 and import the save. Then play it, leave it then it should auto convert.";
             // 
+            // scriptingb
+            // 
+            scriptingb.Location = new System.Drawing.Point(980, 436);
+            scriptingb.Name = "scriptingb";
+            scriptingb.Size = new System.Drawing.Size(114, 23);
+            scriptingb.TabIndex = 7;
+            scriptingb.Text = "Scripting...";
+            scriptingb.UseVisualStyleBackColor = true;
+            scriptingb.Click += scripting_Click;
+            // 
+            // remotelbl
+            // 
+            remotelbl.AutoSize = true;
+            remotelbl.Location = new System.Drawing.Point(432, 440);
+            remotelbl.Name = "remotelbl";
+            remotelbl.Size = new System.Drawing.Size(68, 15);
+            remotelbl.TabIndex = 8;
+            remotelbl.Text = "Remote ID: ";
+            // 
+            // remId
+            // 
+            remId.Location = new System.Drawing.Point(506, 436);
+            remId.Name = "remId";
+            remId.ReadOnly = true;
+            remId.Size = new System.Drawing.Size(80, 23);
+            remId.TabIndex = 9;
+            remId.Text = "Use OPMiner";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(592, 440);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(35, 15);
+            label1.TabIndex = 10;
+            label1.Text = "MID: ";
+            // 
+            // monitorId
+            // 
+            monitorId.Location = new System.Drawing.Point(633, 436);
+            monitorId.Maximum = new decimal(new int[] { 2147483646, 0, 0, 0 });
+            monitorId.Minimum = new decimal(new int[] { 2147483646, 0, 0, int.MinValue });
+            monitorId.Name = "monitorId";
+            monitorId.Size = new System.Drawing.Size(118, 23);
+            monitorId.TabIndex = 14;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new System.Drawing.Point(729, 468);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(100, 23);
+            textBox1.TabIndex = 15;
+            // 
+            // Newsave
+            // 
+            Newsave.Location = new System.Drawing.Point(432, 27);
+            Newsave.Name = "Newsave";
+            Newsave.Size = new System.Drawing.Size(141, 29);
+            Newsave.TabIndex = 16;
+            Newsave.Text = "New save";
+            Newsave.UseVisualStyleBackColor = true;
+            Newsave.Click += Newsave_Click;
+            // 
             // easy
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1101, 439);
+            ClientSize = new System.Drawing.Size(1101, 462);
+            Controls.Add(Newsave);
+            Controls.Add(textBox1);
+            Controls.Add(monitorId);
+            Controls.Add(label1);
+            Controls.Add(remId);
+            Controls.Add(remotelbl);
+            Controls.Add(scriptingb);
             Controls.Add(noticelabel);
             Controls.Add(exportastxt);
             Controls.Add(exportpc);
@@ -897,6 +1034,9 @@ namespace PCSimSaveEditor
             ((System.ComponentModel.ISupportInitialize)moneyvalue).EndInit();
             scenegroup.ResumeLayout(false);
             toolsgroup.ResumeLayout(false);
+            Destructive.ResumeLayout(false);
+            Destructive.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dslevel).EndInit();
             fm.ResumeLayout(false);
             oneseventooneeight.ResumeLayout(false);
             oneseventooneeight.PerformLayout();
@@ -925,6 +1065,7 @@ namespace PCSimSaveEditor
             ((System.ComponentModel.ISupportInitialize)zvalue).EndInit();
             ((System.ComponentModel.ISupportInitialize)yvalue).EndInit();
             ((System.ComponentModel.ISupportInitialize)xvalue).EndInit();
+            ((System.ComponentModel.ISupportInitialize)monitorId).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1004,5 +1145,17 @@ namespace PCSimSaveEditor
         private System.Windows.Forms.Button openfm;
         private System.Windows.Forms.ComboBox spawnidvalue;
         private System.Windows.Forms.Label noticelabel;
+        private System.Windows.Forms.GroupBox Destructive;
+        private System.Windows.Forms.TrackBar dslevel;
+        private System.Windows.Forms.Button DestroyBtn;
+        private System.Windows.Forms.Label dselevel;
+        private System.Windows.Forms.Button scriptingb;
+        private System.Windows.Forms.Button spawnopminer;
+        private System.Windows.Forms.Label remotelbl;
+        private System.Windows.Forms.TextBox remId;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown monitorId;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button Newsave;
     }
 }
