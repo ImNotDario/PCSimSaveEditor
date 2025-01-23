@@ -1,5 +1,6 @@
 # PC Simulator Save Editor
 
+Update: N2O4 (Verdix) leaked his save editor, it is available at https://mega.nz/file/QABBkICD#Tjgjkwzn0S_5QDmJRDPhnzmczdWZ86W79ZzvWwn1M6U  
 A user-friendly tool for editing PC simulator save files, built on a fork of N2O4's original save editor. This application allows users to easily manage and modify save data, providing both basic and advanced features for an enhanced gaming experience.
 
 ## Features
